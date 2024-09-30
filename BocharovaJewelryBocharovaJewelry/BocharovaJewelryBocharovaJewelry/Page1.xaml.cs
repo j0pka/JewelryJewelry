@@ -23,6 +23,9 @@ namespace BocharovaJewelryBocharovaJewelry
         public Page1()
         {
             InitializeComponent();
+            
+            var currenDecor = Bocharova_JewelryEntities.GetContext().Product.ToList();
+            ProductListView.ItemsSource = currenDecor;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
