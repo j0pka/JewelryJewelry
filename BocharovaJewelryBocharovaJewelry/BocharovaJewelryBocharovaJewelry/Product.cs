@@ -11,7 +11,8 @@ namespace BocharovaJewelryBocharovaJewelry
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.Windows.Media;
+
     public partial class Product
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,7 +20,7 @@ namespace BocharovaJewelryBocharovaJewelry
         {
             this.OrderProduct = new HashSet<OrderProduct>();
         }
-    
+
         public string ProductArticleNumber { get; set; }
         public string ProductName { get; set; }
         public string ProductDescription { get; set; }
@@ -32,8 +33,22 @@ namespace BocharovaJewelryBocharovaJewelry
         public int ProductCurrentDiscount { get; set; }
         public string ProductUnit { get; set; }
         public string ProductSupplier { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OrderProduct> OrderProduct { get; set; }
+
+
+        public SolidColorBrush ProductColor
+        {
+            get
+            {
+                // Если скидка больше 15%, цвет #7fff000, иначе белый
+                if (ProductCurrentDiscount > 15)
+                    return (SolidColorBrush)new BrushConverter().ConvertFromString("#7fff00");
+                else
+                    return (SolidColorBrush)new BrushConverter().ConvertFromString("White");
+            }
+        }
+
     }
 }
