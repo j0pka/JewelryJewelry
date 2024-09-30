@@ -13,8 +13,22 @@
             <RowDefinition Height="auto"></RowDefinition>
             <RowDefinition Height="auto"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
-            
+            <RowDefinition Height="auto"></RowDefinition>
         </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center">
+            <TextBlock Name="TBCount" FontSize="20" Height="30"></TextBlock>
+            <TextBlock Name="TBAllRecords" FontSize="20" Height="30"></TextBlock>
+            <Button Name="LeftDirButton" Content="&lt;"  Width="20" Height="30" Click="LeftDirButton_Click"/>
+            <ListBox FontSize="20" Name="PageListBox" MouseUp="PageListBox_MouseUp" VerticalAlignment="Center">
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Horizontal"/>
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+            </ListBox>
+            <Button Name="RightDirButton" Content="&gt;" Width="20" Height="30"  Click="RightDirButton_Click"/>
+        </StackPanel>
 
         <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center">
             <StackPanel Margin="5" Orientation="Horizontal">
@@ -32,7 +46,7 @@
                 </ComboBox>
             </StackPanel>
         </WrapPanel>
-        
+
         <StackPanel Grid.Row="1" Orientation="Vertical" Margin="5">
             <RadioButton Content="По возрастанию стоимости" GroupName="Sort" Width="300" FontSize="20" Name="RButtonUp" Checked="RButtonUp_Checked"/>
             <RadioButton Content="По убыванию стоимости" GroupName="Sort" Width="300" FontSize="20" Name="RButtonDown" Checked="RButtonDown_Checked" />
@@ -51,9 +65,9 @@
                             <RowDefinition Height="auto"/>
                             <RowDefinition Height="auto"/>
                             <RowDefinition Height="*"/>
-                           
+
                         </Grid.RowDefinitions>
-                        
+
                         <Image  Width="200" Grid.Column="0" Stretch="UniformToFill"  Grid.RowSpan="4" HorizontalAlignment="Center">
                             <Image.Source>
                                 <Binding Path="MainImagePath">
@@ -66,19 +80,19 @@
                             </Image.Source>
                         </Image>
 
-                       
-                       
-                        
+
+
+
                         <StackPanel  Grid.Column="1" Grid.Row="1" Orientation="Vertical" HorizontalAlignment="Left">
                             <TextBlock Text="{Binding ProductName}" FontSize="25"  Margin="5" Grid.Column="1" Grid.Row="0" FontWeight="Bold" ></TextBlock>
 
                             <TextBlock Text="{Binding ProductDescription }" FontSize="20" Margin="5"  Grid.Column="1" Grid.Row="1"></TextBlock>
 
                             <TextBlock Text="{Binding ProductManufacturer , StringFormat={}Производитель: {0} }" FontSize="20" Margin="5"  Grid.Column="1" Grid.Row="2"></TextBlock>
-                            
+
                             <TextBlock Text="{Binding ProductCost, StringFormat={}Цена: {0:0} руб. }" FontSize="20" Margin="5"  ></TextBlock>
                         </StackPanel>
-                       
+
                         <TextBlock Text="{Binding ProductCurrentDiscount, StringFormat={}{0} % }" Opacity="{Binding ProductCurrentDiscount}"  FontSize="55" Margin="5"  Grid.Column="2" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Right" Grid.ColumnSpan="2"></TextBlock>
 
                         <Image Width="175" Grid.Column="0" Stretch="Uniform" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1" Margin=" 5">
@@ -93,9 +107,9 @@
                             </Image.Source>
                         </Image>
 
-                       
 
-                        
+
+
 
 
                     </Grid>
