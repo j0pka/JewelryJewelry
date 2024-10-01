@@ -23,21 +23,12 @@ namespace BocharovaJewelryBocharovaJewelry
         public MainWindow()
         {
             InitializeComponent();
-            MainFrame.Navigate(new Page1());
+            MainFrame.Navigate(new AuthPage());
             Manager.MainFrame=MainFrame;
         }
 
-        private void Back_Click(object sender, RoutedEventArgs e)
-        {
-            Manager.MainFrame.GoBack();
-        }
-
+      
         private void MainFrame_ContentRendered(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void BtnBack_Click(object sender, RoutedEventArgs e)
         {
             if (MainFrame.CanGoBack)
             {
@@ -47,6 +38,11 @@ namespace BocharovaJewelryBocharovaJewelry
             {
                 BtnBack.Visibility = Visibility.Hidden;
             }
+        }
+
+        private void BtnBack_Click(object sender, RoutedEventArgs e)
+        {
+            Manager.MainFrame.GoBack();
         }
     }
 }

@@ -6,17 +6,31 @@
       xmlns:local="clr-namespace:BocharovaJewelryBocharovaJewelry"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="Page1">
+      Title="Page1" FontFamily="Comic Sans MS">
 
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"></RowDefinition>
             <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
             <RowDefinition Height="auto"></RowDefinition>
         </Grid.RowDefinitions>
+       
+      
 
-        <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center">
+        <StackPanel Grid.Row="0" Margin="20 10 0 0">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Вы авторизованы как " FontSize="20"/>
+                <TextBlock Name="FIOTB" FontSize="20" Width="500" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Роль: " FontSize="20"/>
+                <TextBlock Name="RoleTB" FontSize="20" Width="500" />
+            </StackPanel>
+        </StackPanel>
+
+        <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Right">
             <TextBlock Name="TBCount" FontSize="20" Height="30"></TextBlock>
             <TextBlock Name="TBAllRecords" FontSize="20" Height="30"></TextBlock>
             <Button Name="LeftDirButton" Content="&lt;"  Width="20" Height="30" Click="LeftDirButton_Click"/>
@@ -30,13 +44,13 @@
             <Button Name="RightDirButton" Content="&gt;" Width="20" Height="30"  Click="RightDirButton_Click"/>
         </StackPanel>
 
-        <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center">
+        <WrapPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center"> 
             <StackPanel Margin="5" Orientation="Horizontal">
                 <TextBlock Text="Введите название для поиска" TextAlignment="Center" Width="300" FontSize="20"/>
                 <TextBox Name="TBoxSearch" TextChanged="TBoxSearch_TextChanged" Width="150" FontSize="15"/>
             </StackPanel>
 
-            <StackPanel Orientation="Horizontal" Margin="5">
+            <StackPanel  Orientation="Horizontal" Margin="5">
                 <TextBlock Text=" Выбиите название для поиска " TextAlignment="Right" Width="300" FontSize="20"/>
                 <ComboBox Name="ComboType" SelectionChanged="ComboType_SelectionChanged" FontSize="15" Width="150">
                     <TextBlock>Все</TextBlock>
@@ -47,12 +61,12 @@
             </StackPanel>
         </WrapPanel>
 
-        <StackPanel Grid.Row="1" Orientation="Vertical" Margin="5">
+        <StackPanel Grid.Row="2" Orientation="Vertical" Margin="5">
             <RadioButton Content="По возрастанию стоимости" GroupName="Sort" Width="300" FontSize="20" Name="RButtonUp" Checked="RButtonUp_Checked"/>
             <RadioButton Content="По убыванию стоимости" GroupName="Sort" Width="300" FontSize="20" Name="RButtonDown" Checked="RButtonDown_Checked" />
         </StackPanel>
 
-        <ListView Name="ProductListView" Grid.Row="2" >
+        <ListView Name="ProductListView" Grid.Row="3" >
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Grid Background="{Binding ProductColor}" >

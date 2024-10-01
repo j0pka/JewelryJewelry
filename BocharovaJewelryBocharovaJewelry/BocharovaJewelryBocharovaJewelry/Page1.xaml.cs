@@ -25,17 +25,37 @@ namespace BocharovaJewelryBocharovaJewelry
         int CurrentPage = 0;
         List<Product> CurrentPageList = new List<Product>();
         List<Product> TableList;
-        public Page1()
+        public Page1(User user)
         {
-            InitializeComponent();
-
-           
+            InitializeComponent();          
             var currenDecor = Bocharova_JewelryEntities.GetContext().Product.ToList();
             ProductListView.ItemsSource = currenDecor;
-
             ComboType.SelectedIndex = 0;
-
             UpdateProduct();
+
+            if (user != null)
+            {
+                FIOTB.Text = user.UserSurname + "" + user.UserName + "" + user.UserPatronymic;
+
+                switch (user.UserRole)
+                {
+                    case 1:
+                        RoleTB.Text = "Администратор";break;
+                    case 2:
+                        RoleTB.Text = "Менеджер"; break;
+                    case 3:
+                        RoleTB.Text = "Клиент"; break;
+                    default:
+                        RoleTB.Text = "Гость";break;
+                }
+            }
+            else
+            {
+                FIOTB.Text = "Гость";
+                RoleTB.Text = "Гость";
+            }
+            UpdateProduct();
+
         }
 
         private void UpdateProduct()
