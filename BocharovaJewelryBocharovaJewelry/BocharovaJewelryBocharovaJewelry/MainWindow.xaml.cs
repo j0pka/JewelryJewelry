@@ -42,7 +42,7 @@ namespace BocharovaJewelryBocharovaJewelry
 
         private void BtnBack_Click(object sender, RoutedEventArgs e)
         {
-            Manager.MainFrame.GoBack();
+            Manager.MainFrame.GoBack();          
         }
     }
 }
